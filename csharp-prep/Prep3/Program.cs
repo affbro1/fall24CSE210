@@ -4,17 +4,29 @@ class Program
 {
     static void Main(string[] args)
     {
-        Fraction f1 = new Fraction(); 
-        Fraction f2 = new Fraction(6);
-        Fraction f3 = new Fraction(6,7); 
+        Random randomGenerator = new Random();
+        int magicNumber = randomGenerator.Next(1, 101);
+        int guess = -1;
 
-        Console.WriteLine(f1.GetString()); 
-        Console.WriteLine(f1.GetDecimalValue()); 
 
-        Console.WriteLine(f2.GetString()); 
-        Console.WriteLine(f2.GetDecimalValue()); 
+        while (guess != magicNumber)
+        {
+            Console.Write("What is the magic number? (1-100)");
+            guess = int.Parse(Console.ReadLine());
 
-        Console.WriteLine(f3.GetString()); 
-        Console.WriteLine(f3.GetDecimalValue()); 
+            if (magicNumber > guess)
+            {
+                Console.WriteLine("Higher");
+            }
+            else if (magicNumber < guess)
+            {
+                Console.WriteLine("Lower");
+            }
+            else
+            {
+                Console.WriteLine("You guessed it!");
+            }
+
+        }                    
     }
 }
