@@ -3,18 +3,20 @@ using System.Collections.Generic;
 
 public class Video
 {
-    public string Title { get; set; }
-    public string Author { get; set; }
-    public int LengthInSeconds { get; set; }
-    public List<Comment> Comments { get; set; }
+    public string Title {get; set;}
+    public string Author {get; set;}
+    public int LengthInSeconds {get; set;}
+    public int Upvotes {get; set;}
+    public List<Comment> Comments {get; set;}
 
    
-    public Video(string title, string author, int lengthInSeconds)
+    public Video(string title, string author, int lengthInSeconds, int upvotes)
     {
         Title = title;
         Author = author;
         LengthInSeconds = lengthInSeconds;
         Comments = new List<Comment>();
+        Upvotes = upvotes; 
     }
 
     
@@ -29,6 +31,7 @@ public class Video
         Console.WriteLine($"Title: {Title}");
         Console.WriteLine($"Author: {Author}");
         Console.WriteLine($"Length: {LengthInSeconds} seconds");
+        Console.WriteLine($"Number of Upvotes: {Upvotes}");
         Console.WriteLine($"Number of Comments: {GetNumberOfComments()}");
 
 

@@ -5,31 +5,32 @@ public class Program
 {
     public static void Main()
     {
-        
         List<Video> videos = new List<Video>();
 
-       
-        Video video1 = new Video("Introduction to C#", "John Foxworthy", 300);
+        Video video1 = new Video("Introduction to C#", "John Foxworthy", 300, 562);
         video1.Comments.Add(new Comment("Alice", "Great tutorial!"));
         video1.Comments.Add(new Comment("Bob", "Very informative, thanks!"));
         videos.Add(video1);
 
-        Video video2 = new Video("Advanced C# Techniques", "Jane DeSante's", 450);
+        Video video2 = new Video("Advanced C# Techniques", "Jane DeSante's", 450, 832);
         video2.Comments.Add(new Comment("Charlie", "This was a bit too advanced for me."));
         video2.Comments.Add(new Comment("Dave", "Fantastic content, very clear!"));
         videos.Add(video2);
 
-        Video video3 = new Video("C# Design Patterns", "Steve Jobs", 1600);
+        Video video3 = new Video("C# Design Patterns", "Steve Jobs", 1600, 40);
         video3.Comments.Add(new Comment("Eve", "Love the design patterns explained here."));
         videos.Add(video3);
 
-        Video video4 = new Video("C# and .NET Core", "Sarah Lee Harris", 700);
+        Video video4 = new Video("C# and .NET Core", "Sarah Lee Harris", 700, 1005);
         video4.Comments.Add(new Comment("Frank", "Very helpful, thanks!"));
         video4.Comments.Add(new Comment("Grace", "I learned a lot."));
         video4.Comments.Add(new Comment("Hank", "The best .NET Core tutorial!"));
         videos.Add(video4);
 
-      
+   
+        videos.Sort((v1, v2) => v2.Upvotes.CompareTo(v1.Upvotes));
+
+
         foreach (var video in videos)
         {
             video.DisplayVideoInfo();
