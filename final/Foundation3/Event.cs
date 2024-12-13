@@ -1,4 +1,3 @@
-// Event.cs
 public class Event
 {
     private string title;
