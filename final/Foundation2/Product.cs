@@ -22,4 +22,19 @@ public class Product
     {
         return $"{name} (ID: {productId})";
     }
+
+    public string GetProductName()
+    {
+        return name;
+    }
+
+    public int GetProductId()
+    {
+        return productId;
+    }
+
+    public int GetQuantity()
+    {
+        return quantity;
+    }
 }

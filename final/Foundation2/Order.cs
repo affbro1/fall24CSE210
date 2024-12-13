@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 public class Order
 {
     private List<Product> products;
@@ -29,18 +26,33 @@ public class Order
         return totalPrice + shippingCost;
     }
 
-    public string GetPackingLabel()
+public string GetPackingLabel()
+{
+    string label = "PACKING LABEL:\n";
+    label += string.Format("{0,-35} {1,-15} {2,-5}\n", "ITEM:", "ID:", "QTY:");
+    
+    foreach (var product in products)
     {
-        string label = "Packing Label:\n";
-        foreach (var product in products)
-        {
-            label += product.GetProductLabel() + "\n";
-        }
-        return label;
+        label += string.Format("{0,-35} {1,-15} {2,-5}\n", product.GetProductName(), product.GetProductId(), product.GetQuantity());
     }
+    return label;
+}
+
 
     public string GetShippingLabel()
     {
-        return $"Shipping Label:\n{customer.GetCustomerName()}\n{customer.GetAddress()}\n";
+        return $"SHIPPING LABEL:\n{customer.GetCustomerName()}\n{customer.GetAddress()}\n";
+    }
+
+    public string GetDiscountedPrice()
+    {
+        double totalPrice = CalculateTotalPrice();
+        double discount = totalPrice * 0.13;
+        double discountedPrice = totalPrice - discount;
+
+        return $"TOTAL PRICE: ${totalPrice}\n" +
+                "Congradulations on your Friday the 13th Discount!\n"+
+               $"Discount (13%): -${discount:F2}\n" +
+               $"Adjusted Total: ${discountedPrice:F2}\n";
     }
 }
